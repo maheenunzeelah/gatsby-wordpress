@@ -30,14 +30,31 @@ module.exports = {
     {
      resolve:'gatsby-source-wordpress',
      options:{
-       excludedRoutes:['/wp'],
-        baseUrl:'https://claritytxt.com/',
+      //  excludedRoutes:['/wp'],
+        baseUrl:`www.claritytxt.com`,
+        // auth: {
+        //   htaccess: {
+        //     username: 'admin',
+        //     password:'sibs2bad'
+        //   },
+        // },
+        restApiRoutePrefix:"index.php/wp-json",
+        
+        includedRoutes: [
+          "**/categories",
+          "**/posts",
+          "**/pages",
+          "**/menus",
+          "**/tags",
+          // "**/taxonomies",
+          // "**/users",
+        ],
         protocol:'https',
         hostingWPCOM:false,
         useACF:true,
         searchAndReplaceContentUrls: {
-          sourceUrl: "https://claritytxt.com/",
-          replacementUrl: " ",
+          sourceUrl: "www.claritytxt.com",
+          replacementUrl: "http://localhost:8000",
         },
      }
     },

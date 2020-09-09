@@ -32,13 +32,14 @@ const handleOverlayMenu=()=>{
 }
   return (
    <div>
-     <Hamburger />
-     <OverlayMenu />
+     {/* <Hamburger />
+   
      <Header />
      <main>
        {children}
      </main>
-     <Footer />
+     <Footer /> */}
+       <OverlayMenu />
    </div>
   )
 }
