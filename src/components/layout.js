@@ -9,7 +9,7 @@ import React ,{useState} from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Hamburger from "./Hamburger";
-import Header from "./Header";
+import Header from "./header";
 import OverlayMenu from "./OverlayMenu";
 import Footer from "./Footer";
 import "./layout.css"
