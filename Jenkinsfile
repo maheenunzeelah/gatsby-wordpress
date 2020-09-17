@@ -1,15 +1,21 @@
 pipeline{
- agent {
-     docker{
-         image 'node',
-         args '-p 8000:8000'
-     }
- }
- stages{
-     stage('Build'){
+ agent none
+   stages{
+     stage('docker npm version'){
+         agent{
+             docker(image 'node')
+         }
          steps{
-             sh 'gatsby build'
+             sh 'node -v'
+             sh 'npm -v'
          }
      }
- }
-}
+     stage('dockerfile npm version'){
+         agent{
+             dockerfile true
+         }
+         steps{
+             sh 'node -v'
+             sh 'npm -v'
+         }
+     }
