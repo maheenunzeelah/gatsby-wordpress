@@ -30,6 +30,7 @@ module.exports = {
     {
      resolve:'gatsby-source-wordpress',
      options:{
+      normalizers: normalizers => [ mapCustomApis,...normalizers],
       //  excludedRoutes:['/wp'],
         baseUrl:`www.claritytxt.com`,
         // auth: {
@@ -46,9 +47,11 @@ module.exports = {
           "**/pages",
           "**/menus",
           "**/tags",
+          // "**/wp/v2/**"
           // "**/taxonomies",
           // "**/users",
         ],
+        verboseOutput: true,
         protocol:'https',
         hostingWPCOM:false,
         useACF:true,
@@ -74,4 +77,14 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+}
+const mapCustomApis = {
+  name: `mapCustomApis`,
+  normalizer: function({ entities }) {
+
+    return entities.reduce((acc, e) => {
+        return acc.concat(e);
+     
+    }, []);
+    }
 }
